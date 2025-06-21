@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart Registration</title>
+    <style>
+        body{
+            font-family: 'Courier New', Courier, monospace;
+            background-color: blanchedalmond;
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            height: 100vh;
+        }
+        .register-container{
+            background-color: aqua;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(red, green, blue, alpha);
+            width: 300px;
+        }
+        .register-container h2{
+            color: blueviolet;
+            text-align: center;
+        }
+        .form-group{
+            margin-bottom:5px;
+        }
+        label{
+            display: block;
+            margin-bottom: 15px;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"]{
+            width:100%;
+            padding: 8px;
+            border:1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn{
+            background-color: indianred;
+            color: white;
+            padding: 10px;
+            width:100%;
+            border:none;
+            border-radius: 5px;
+            cursor:pointer;
+        }
+        .error{
+            color:red;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Register</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text"id="fullname"name="fullname"required/>
+                <div class="error"id="nameerror"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email"id="email"name="email"required/>
+                <div class="error"id="emailError"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password"id="password"name="password"required/>
+                <div class="error"id="passwordError"></div>
+            </div>
+            <button type="submit"class="btn">Sign Up</button>
+        </form>
+        </div>
+        <script>
+            document.getElementById('registerForm').addEventListener('submit',function(event){
+                event.preventDefault();
+                document.getElementById('nameError').textContent="";
+                document.getElementById('emailError').textContent="";
+                document.getElementById('passwordError').textContent="";
+                const name=document.getElementById('fullname').value.trim();
+                const email=document.getElementById("email").value.trim();
+                const password=document.getElementById('password').value.trim();
+                let isValid=true;
+                if(name.length<3){
+                    document.getElementById('nameError').textContent="Name must be at least 3 characters";
+                    isValid=false;
+                }
+                const emailRegex= /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if(!emailRegex.test(email)){
+                    document.getElementById('emailError').textContent='Invalid email format';
+                    isValid=false;
+                }
+                If(password.length<6){
+                    document.getElementById('passwordError').textContent='Password must be at least 6 characters';
+                    isValid=false;
+                }
+                if (isValid){
+                    alert('Registration Successful!');
+
+                }
+            
+            });
+        </script>
+    
+</body>
+</html>
