@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>SIMPLE INTEREST CALCULATOR</title>
+    <style>
+        body{
+            font-family: 'Times New Roman', Times, serif;
+            padding: 45px;
+            background: bisque;
+        }
+        .container{
+            max-width: 400px;
+            margin: auto;
+            background: aqua;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: wheat;
+        }
+        h2{
+            text-align: center;
+            color:blue;
+        }
+        input[type="number"],button{
+            width:150%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border:darkslategrey;
+        }
+        button{
+            background-color: blueviolet;
+            color: chocolate;
+            font-weight:bold ;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover{
+            background-color: crimson;
+        }
+        .result{
+            margin-top: 20px;
+            font-size: 1.2em;
+            color:darkgoldenrod;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Simple Interest Calculator</h2>
+        <label for="principal">Principal Amount (P):</label>
+        <input type="number"id="principal" placeholder="Enter principal">
+        <label for="rate">Rate of Interest(R):</label>
+        <input type="number"id="rate"placeholder="Enter rate %">
+        <label for="time">Time(T in years):</label>
+        <input type="number"id="time"placeholder="Enter Time in Years">
+        <button onclick="calculateInterest()">Calculate</button>
+        <div class="result" id="result"></div>
+    </div>
+    <script>
+        function calculateInterest(){
+            const principal=parseFloat(document.getElementById("principal").value);
+            const rate=parseFloat(document.getElementById("rate").value);
+            const time=parseFloat(document.getElementById("time").value);
+            if(isNaN(principal) || isNaN(rate) || isNaN(time)){
+                document.getElementById("result").innerText="Please enter all values correctly.";
+                return;
+            }       
+            const interest=(principal*rate*time)/100;
+            document.getElementById("result").innerText = `Simple Interest: ₹${interest.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
