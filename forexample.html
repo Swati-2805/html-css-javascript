@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>DEGREE CONVERTER</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h2>DEGREE CONVERTER</h2>
+    <input type="number" id="degree" placeholder="Enter the number"/>
+    <select id="fromDegree">
+        <option value="Celsius">Celsius</option>
+        <option value="Fahrenheit">Fahrenheit</option>
+    </select>
+    <select id="toDegree">
+        <option value="Celsius">Celsius</option>
+        <option value="Fahrenheit">Fahrenheit</option>
+    </select>
+    <button onclick="convertDegree()">Convert</button>
+    <h3 id="result">Converted Degree:</h3>
+
+    <script>
+        function convertDegree() {
+            const degree = parseFloat(document.getElementById('degree').value);
+            const from = document.getElementById('fromDegree').value;
+            const to = document.getElementById('toDegree').value;
+
+            if (isNaN(degree)) {
+                alert("Please enter a valid number.");
+                return;
+            }
+
+            let converted;
+
+            if (from === to) {
+                converted = degree;
+            } else if (from === "Celsius" && to === "Fahrenheit") {
+                converted = (degree * 9/5) + 32;
+            } else if (from === "Fahrenheit" && to === "Celsius") {
+                converted = (degree - 32) * 5/9;
+            }
+
+            document.getElementById('result').textContent = `Converted Degree: ${converted.toFixed(2)} ${to}`;
+        }
+    </script>
+</body>
+</html>

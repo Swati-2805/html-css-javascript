@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            padding: 50px;
+            background: beige;
+            
+        }
+        .login-box{
+            background: aquamarine;
+            padding: 20px;
+            max-width: 300px;
+            margin:auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(red, green, blue, alpha);
+        }
+        input{
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+        button{
+            width:100%;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: cadetblue;
+            color:black;
+            border: none;
+            cursor: pointer;
+        }
+        .error{
+            color: deeppink;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h1>Login</h1>
+        <input type="text"id="username"placeholder="Enter Username"/>
+        <input type="password"id="password"placeholder="Enter Password"/>
+        <button onclick="login()">Login</button>
+        <div class="error"id="error"></div>
+
+    </div>
+    <script>
+        function login(){
+            const username=document.getElementById("username").value.trim();
+            const password=document.getElementById("password").value;
+        
+            const validlogin={
+                username:"admin",
+                password:"1234"
+
+            };
+            if (username===validlogin.username && password===validlogin.password ){
+                alert("LOGIN SUCCESSFUL!");
+            }
+            else
+            {
+                document.getElementById("error").textContent="Invalid username or password";
+            }
+        }
+        
+    </script>
+</body>
+</html>
